@@ -65,17 +65,48 @@ public class JavaApplication2 {
                 System.out.print("switch defaulting");
                 break;
         }
-        if f1[j-1] + a1,j <= f2[j-1] + t2,j-1 + a1,j
-        then f1[j] ←- f1[j-1]+a1,j
-        l1[j] ←- 1
-        else f1[j] ←- f2[j-1] + t2,j-1 + a1,j
-        l1[j] ←- 2
+        
 
         for (int l = 1;l<s-1;l++){
-        if (assembly1[l-1]+delay[0][l]<=assembly2[l-1]+delay[1][l]){
-            assembly1[l] = assembly1[l-1]+delay[0][l];
-            final
-        }
+            //minimum of the three
+             assembly1[l] = Math.min(assembly1[l-1]+delay[l][0], Math.min(assembly2[l-1]+delay[l][1]+laneshift,assembly3[l-1]+delay[l][2]+laneshift));
+            //path insert 
+            if (assembly1[l] == assembly1[l-1]+delay[l][0]){
+                fullpath1[l] = 1;
+            }
+            if (assembly1[l] == assembly2[l-1]+delay[l][1]){
+                fullpath1[l] = 2;
+            }
+            if (assembly1[l] == assembly1[l-1]+delay[l][2]){
+                fullpath1[l] = 3;
+            }
+            
+            //minimum of the three
+             assembly2[l] = Math.min(assembly2[l-1]+delay[l][1], Math.min(assembly1[l-1]+delay[l][0]+laneshift,assembly3[l-1]+delay[l][2]+laneshift));
+            //path insert 
+            if (assembly2[l] == assembly2[l-1]+delay[l][1]){
+                fullpath1[l] = 2;
+            }
+            if (assembly2[l] == assembly1[l-1]+delay[l][0]+laneshift){
+                fullpath1[l] = 1;
+            }
+            if (assembly2[l] == assembly3[l-1]+delay[l][2]+laneshift){
+                fullpath1[l] = 3;
+            }
+            
+            //minimum of the three
+             assembly3[l] = Math.min(assembly3[l-1]+delay[l][2], Math.min(assembly1[l-1]+delay[l][0]+laneshift,assembly2[l-1]+delay[l][1]+laneshift));
+            //path insert 
+            if (assembly3[l] == assembly3[l-1]+delay[l][2]){
+                fullpath1[l] = 3;
+            }
+            if (assembly3[l] == assembly1[l-1]+delay[l][0]+laneshift){
+                fullpath1[l] = 1;
+            }
+            if (assembly3[l] == assembly2[l-1]+delay[l][1]+laneshift){
+                fullpath1[l] = 2;
+            }
+        
         }
     }
     
