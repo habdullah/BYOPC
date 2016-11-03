@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package javaapplication2;
-
+import java.util.*; 
 /**
  *
  * @author hammad
@@ -16,6 +16,17 @@ public class JavaApplication2 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        System.out.print("Enter No of PCs\n");
+        Scanner scan = new Scanner(System.in);
+        int p = scan.nextInt();
+        System.out.print("Enter No of stations\n");
+        int s = scan.nextInt();
+        
+        int[] Assembly1= new int[s];
+        int[] Assembly2= new int[s];
+        int[] Assembly3= new int[s];
+        
+        
     }
     
 }
