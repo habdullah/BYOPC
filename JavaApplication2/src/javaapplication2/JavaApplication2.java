@@ -72,12 +72,15 @@ public class JavaApplication2 {
              assembly1[l] = Math.min(assembly1[l-1]+delay[l][0], Math.min(assembly2[l-1]+delay[l][1]+laneshift,assembly3[l-1]+delay[l][2]+laneshift));
             //path insert 
             if (assembly1[l] == assembly1[l-1]+delay[l][0]){
+                System.out.println("Fullpath+1 l:\n"+l);
                 fullpath1[l] = 1;
             }
             if (assembly1[l] == assembly2[l-1]+delay[l][1]){
+                System.out.println("Fullpath+2 l:\n"+l);
                 fullpath1[l] = 2;
             }
-            if (assembly1[l] == assembly1[l-1]+delay[l][2]){
+            if (assembly1[l] == assembly3[l-1]+delay[l][2]){
+                System.out.println("Fullpath+3 l:\n"+l);
                 fullpath1[l] = 3;
             }
             
@@ -85,29 +88,55 @@ public class JavaApplication2 {
              assembly2[l] = Math.min(assembly2[l-1]+delay[l][1], Math.min(assembly1[l-1]+delay[l][0]+laneshift,assembly3[l-1]+delay[l][2]+laneshift));
             //path insert 
             if (assembly2[l] == assembly2[l-1]+delay[l][1]){
-                fullpath1[l] = 2;
+                fullpath2[l] = 2;
             }
             if (assembly2[l] == assembly1[l-1]+delay[l][0]+laneshift){
-                fullpath1[l] = 1;
+                fullpath2[l] = 1;
             }
             if (assembly2[l] == assembly3[l-1]+delay[l][2]+laneshift){
-                fullpath1[l] = 3;
+                fullpath2[l] = 3;
             }
             
             //minimum of the three
              assembly3[l] = Math.min(assembly3[l-1]+delay[l][2], Math.min(assembly1[l-1]+delay[l][0]+laneshift,assembly2[l-1]+delay[l][1]+laneshift));
             //path insert 
             if (assembly3[l] == assembly3[l-1]+delay[l][2]){
-                fullpath1[l] = 3;
+                fullpath3[l] = 3;
             }
             if (assembly3[l] == assembly1[l-1]+delay[l][0]+laneshift){
-                fullpath1[l] = 1;
+                fullpath3[l] = 1;
             }
             if (assembly3[l] == assembly2[l-1]+delay[l][1]+laneshift){
-                fullpath1[l] = 2;
+                fullpath3[l] = 2;
             }
         
         }
+        
+        int Fstar = Math.min(assembly1[s-1]+10, Math.min(assembly2[s-1]+10,assembly3[s-1]+10));
+        int Lstar;
+        if (Fstar == assembly1[s-1]+10){
+                Lstar=1;
+            }
+            if (Fstar == assembly2[s-1]+10){
+                Lstar=2;
+            }
+            if (Fstar == assembly3[s-1]+10){
+                Lstar=3;
+            }
+        
+        System.out.println("Optimal path for PC1:\n");
+        System.out.println(Arrays.toString(fullpath1));
+        
+        System.out.println("\nOptimal path for PC2:\n");
+        System.out.println(Arrays.toString(fullpath2));
+        
+        System.out.println("\nOptimal path for PC3:\n");
+        System.out.println(Arrays.toString(fullpath3));
+        
+        
+            
+            
+         
     }
     
 }
