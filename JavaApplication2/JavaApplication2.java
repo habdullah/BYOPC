@@ -115,7 +115,7 @@ public class JavaApplication2 {
         }
         
         int Fstar = Math.min(assembly1[s-1]+10, Math.min(assembly2[s-1]+10,assembly3[s-1]+10));
-        int Lstar=1;
+        int Lstar;
         if (Fstar == assembly1[s-1]+10){
                 Lstar=1;
             }
@@ -135,11 +135,9 @@ public class JavaApplication2 {
         System.out.println("\nOptimal path for PC3:\n");
         System.out.println(Arrays.toString(fullpath3));
         
-        System.out.println("\nFstar:\n");
-        System.out.println(Fstar);
+        
             
-        System.out.println("\nLstar:\n");
-        System.out.println(Lstar);
+            
          
     }
     
